@@ -20,7 +20,7 @@ public class UserQuestions {
     public static final String askGender = "What is your gender? (F/M)";
     public static final String askClassName = "What class would you like to join? (Math/Science)";
 
-
+    // SINCE THESE ARE FINAL INSTANCE VARIABLES JAVA'S NAMING CONVENTION FOR FINAL VARS ARE ALL CAPS --> EX: ASK_TO_JOIN
 
 
 }

@@ -41,39 +41,38 @@ public class Test {
         do {
             System.out.println(UserQuestions.askToJoin);
             String answer = scan.next();
-            if (answer.toUpperCase().startsWith("N")) break;
+            if (answer.toUpperCase().startsWith("N")) continue;
             else if (answer.toUpperCase().startsWith("Y")){
-                System.out.println(UserQuestions.askFirstName);
-                String fName = scan.next();
-                System.out.println(UserQuestions.askLastName);
-                String lName = scan.next();
-                System.out.println(UserQuestions.askAge);
-                int age = scan.nextInt();
                 try {
+                    System.out.println(UserQuestions.askFirstName);
+                    String fName = scan.next();
+                    System.out.println(fName);
+
+                    System.out.println(UserQuestions.askLastName);
+                    String lName = scan.next();
+
+                    System.out.println(UserQuestions.askAge);
+                    int age = scan.nextInt();
                     Permission.checkAge(age);
+
+                    System.out.println(UserQuestions.askGender);
+                    String gender = scan.next();
+
+                    System.out.println(UserQuestions.askClassName);
+                    String className = scan.next();
+                    Permission.checkClassName(className);
+
+                    if (className.equalsIgnoreCase("Math")) students.add(new MathStudent(fName, lName, age, gender, className));
+                    else students.add(new ScienceStudent(fName, lName, age, gender, className)); // (className.equalsIgnoreCase("Science"))
+                    Student++;
+
+                    System.out.println("Congratulations! You are registered for " + className + " class.");
                 }
                 catch(Exception e){
-                    e.printStackTrace();
+                    e.printStackTrace(); // OR CAN BE: System.out.println(e.getMessage());
                 }
-                System.out.println(UserQuestions.askGender);
-                String gender = scan.next();
-                System.out.println(UserQuestions.askClassName);
-                String className = scan.next();
-                try {
-                    Permission.checkClassName(className);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                System.out.println("Congratulations! You are registered for " + className + " class.");
-
-                if (className.equalsIgnoreCase("Math")) students.add(new MathStudent(fName, lName, age, gender, className));
-                else students.add(new ScienceStudent(fName, lName, age, gender, className)); // (className.equalsIgnoreCase("Science"))
-
             }
-
-            Student++;
-
-        }while(Student < 3);
+        }while(Student < 3); // OR CAN BE: while(students.size() < 3); THEN DON'T NEED STUDENT COUNTER & STUDENT++
 
         //int totalMathStudents = (int) students.stream().filter(element -> element.getClassName().equalsIgnoreCase("Math")).count();
         //int totalScienceStudents = (int) students.stream().filter(element -> element.getClassName().equalsIgnoreCase("Science")).count();

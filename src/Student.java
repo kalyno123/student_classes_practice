@@ -4,8 +4,14 @@ public class Student {
 
     //HERE! Create a 5 args constructor
     public Student (String firstName, String lastName, int age, String gender, String className){
-
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.gender = gender;
+        this.className = className;
     }
+
+
 
 
     /*
